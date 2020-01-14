@@ -30,7 +30,7 @@
    <table class="tt" v-for="(item,i) of list" :key="i">
     <tr>
       <td>
-      <img :src="'http://127.0.0.1:5000/weapon/'+item.pic" />
+      <img :src="'http://ddchlm.applinzi.com/weapon/'+item.pic" />
       {{item.wname}}
       </td>
       <td>{{item.wpower}}</td>
@@ -45,7 +45,7 @@
    <table class="tt" v-for="(item,i) of jj" :key="i">
     <tr>
       <td>
-      <img :src="'http://127.0.0.1:5000/weapon/'+item.pic" />
+      <img :src="'http://ddchlm.applinzi.com/weapon/'+item.pic" />
       {{item.wname}}
       </td>
       <td>{{item.wpower}}</td>
@@ -59,7 +59,7 @@
   <mt-tab-container-item id="3">
     <table class="tt" v-for="(item,i) of tj" :key="i">
     <tr>
-      <td><img class="font" :src="'http://127.0.0.1:5000/weapon/'+item.pic" />
+      <td><img class="font" :src="'http://ddchlm.applinzi.com/weapon/'+item.pic" />
       {{item.wname}}</td>
       <td>{{item.wpower}}</td>
       <td>{{item.gunshot}}</td>
@@ -72,7 +72,7 @@
   <mt-tab-container-item id="4">
     <table class="tt" v-for="(item,i) of cf" :key="i">
     <tr>
-      <td><img :src="'http://127.0.0.1:5000/weapon/'+item.pic" />
+      <td><img :src="'http://ddchlm.applinzi.com/weapon/'+item.pic" />
       {{item.wname}}</td>
       <td>{{item.wpower}}</td>
       <td>{{item.gunshot}}</td>
@@ -85,7 +85,7 @@
   <mt-tab-container-item id="5">
     <table class="tt" v-for="(item,i) of xd" :key="i">
     <tr>
-      <td><img :src="'http://127.0.0.1:5000/weapon/'+item.pic" />
+      <td><img :src="'http://ddchlm.applinzi.com/weapon/'+item.pic" />
       {{item.wname}}</td>
       <td>{{item.wpower}}</td>
       <td>{{item.gunshot}}</td>
@@ -98,7 +98,7 @@
   <mt-tab-container-item id="6">
     <table class="tt" v-for="(item,i) of sq" :key="i">
      <tr>
-      <td><img :src="'http://127.0.0.1:5000/weapon/'+item.pic" />
+      <td><img :src="'http://ddchlm.applinzi.com/weapon/'+item.pic" />
       {{item.wname}}</td>
       <td>{{item.wpower}}</td>
       <td>{{item.gunshot}}</td>

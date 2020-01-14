@@ -13,13 +13,13 @@ import 'vant/lib/index.css';
 Vue.use(Vant);
 Vue.use(MintUI)
 Vue.prototype.$echarts = echarts
-axios.defaults.baseURL="http://127.0.0.1:5000";
+axios.defaults.baseURL="http://ddchlm.applinzi.com/";
 axios.defaults.withCredentials=true;
 
 Vue.use(new VueSocketIO({
   debug: true,
   // 服务器端地址
-  connection: 'http://127.0.0.1:5000/',
+  connection: 'http://ddchlm.applinzi.com/',
   vuex: {
   }
 }))

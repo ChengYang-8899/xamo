@@ -1,7 +1,7 @@
 <template>
 <div>
     <mt-swipe :show-indicators="false" style="height:150px;width:99.8%;margin:0 auto" >
-      <mt-swipe-item style="background:red" v-for="(p,i) of ss" :key="i"><img :src="'http://127.0.0.1:5000/'+p.pic"></mt-swipe-item>
+      <mt-swipe-item style="background:red" v-for="(p,i) of ss" :key="i"><img :src="'http://ddchlm.applinzi.com/'+p.pic"></mt-swipe-item>
     </mt-swipe>
 </div>
 </template>

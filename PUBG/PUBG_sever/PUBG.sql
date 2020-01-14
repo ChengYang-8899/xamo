@@ -1,9 +1,7 @@
 /**创建数据库PUBG;**/
-SET NAMES UTF8;
-DROP DATABASE IF EXISTS PUBG;
-CREATE DATABASE PUBG CHARSET=UTF8;
-USE PUBG;
-
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+USE app_ddchlm;
 /**1.创建用户信息表**/
 CREATE TABLE pu_user(
    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -11,7 +9,7 @@ CREATE TABLE pu_user(
    uname VARCHAR(32),   #用户注册时的用户名:长度小于8位的字符
    upwd  VARCHAR(32),   #8-12位密码
    avatar VARCHAR(128), #用户头像路径
-   gender BOOL      #性别0-女  1-男
+   gender INT      #性别0-女  1-男
 );
 -- 用户登录表
 CREATE TABLE pu_login(
@@ -720,9 +718,9 @@ INSERT INTO pu_weapon VALUES(null,2,"DP-28","DP-28.jpg",48,35,25,12,"强");
 INSERT INTO pu_weapon VALUES(null,2,"G36C","G36C.jpg",48,35,25,12,"强");
 INSERT INTO pu_weapon VALUES(null,2,"M16A4","M16A4.jpg",48,35,25,12,"强");
 INSERT INTO pu_weapon VALUES(null,2,"M762","M762.jpg",48,35,25,12,"强");
-INSERT INTO pu_weapon VALUES(null,2,"MK47","Mk47.jpg",48,35,25,12,"强");
+INSERT INTO pu_weapon VALUES(null,2,"MK47","MK47.jpg",48,35,25,12,"强");
 INSERT INTO pu_weapon VALUES(null,2,"GROZA","GROZA.jpg",48,35,25,12,"强");
-INSERT INTO pu_weapon VALUES(null,4,"MP5K","MP5K.jpg",48,35,25,12,"强");
+INSERT INTO pu_weapon VALUES(null,4,"MP5K","MP5k.jpg",48,35,25,12,"强");
 INSERT INTO pu_weapon VALUES(null,4,"汤姆逊","TMX.jpg",48,35,25,12,"强");
 INSERT INTO pu_weapon VALUES(null,4,"UMP45","UMP45.jpg",48,35,25,12,"强");
 INSERT INTO pu_weapon VALUES(null,4,"UZI","UZI.jpg",48,35,25,12,"强");

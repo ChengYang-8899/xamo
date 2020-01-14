@@ -18,7 +18,7 @@
                 <div class="recomd_text">
                     {{text}}  
                  </div>
-                    <img class="recomd-img_2" :src="'http://127.0.0.1:5000/'+pic">
+                    <img class="recomd-img_2" :src="'http://ddchlm.applinzi.com/'+pic">
             </div>
                <div @click="zan" class="recomd_button"><img src="../../public/yemian/dzan.png" >{{nblikes}}</div>
             </div>

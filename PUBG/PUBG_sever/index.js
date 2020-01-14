@@ -4,7 +4,7 @@ const session = require("express-session");
 const mysql = require("mysql");
 const cors = require("cors");
 var server = express();
-let port = 5000;
+let port = 5050;
 var servera = server.listen(port, () => {
   console.log("Server is Listening:", port);
 });
@@ -15,12 +15,17 @@ io.sockets.on('connection', (socket) => {
 
 //2:创建数据库连接池
 var pool = mysql.createPool({
-  host: "127.0.0.1",
-  user: "root",
-  password: "",
-  port: 3306,
+  // host: "127.0.0.1",
+  // user: "root",
+  // password: "",
+  // port: 3306,
+  // database: "PUBG"
+  host: process.env.MYSQL_HOST,
+  port: process.env.MYSQL_PORT,
+  user: process.env.ACCESSKEY,
+  password: process.env.SECRETKEY,
+  database: 'app_' + process.env.APPNAME,
   connectionLimit: 15,
-  database: "PUBG"
 });
 //3:创建web服务器
 
@@ -48,36 +53,36 @@ server.use(express.static("public"));
 
 
 //用户注册
-server.get("/reg",(req,res)=>{
+server.get("/reg", (req, res) => {
   // var $id=req.body.id;
-  var $account=req.query.account;
-  var $uname=req.query.uname;
-  var $upwd=req.query.upwd;
+  var $account = req.query.account;
+  var $uname = req.query.uname;
+  var $upwd = req.query.upwd;
   var tx = "avatar/05.jpg"
-	// var $email=req.body.email;
-	// var $phone=req.body.phone;
-	
-  var sql="insert into pu_user values(null,?,?,?,?,null)";
-  var sql1="insert into pu_login values(null,?,?)";
-  pool.query(sql,[$account,$uname,$upwd,tx],(err,result)=>{
-    if(err) throw err;
-		if(result.affectedRows>0){
+  // var $email=req.body.email;
+  // var $phone=req.body.phone;
+
+  var sql = "insert into pu_user values(null,?,?,?,?,null)";
+  var sql1 = "insert into pu_login values(null,?,?)";
+  pool.query(sql, [$account, $uname, $upwd, tx], (err, result) => {
+    if (err) throw err;
+    if (result.affectedRows > 0) {
       res.send("1");
       return;
-		}else{
-		  res.send("0");
-		}
+    } else {
+      res.send("0");
+    }
   });
-  pool.query(sql1,[$account,$upwd],(err,result)=>{
-		if(err) throw err;
-	});
+  pool.query(sql1, [$account, $upwd], (err, result) => {
+    if (err) throw err;
+  });
 });
 
 // 验证用户是否已注册
 server.get("/isreg", (req, res) => {
   //1:获取参数 uname 
   var n = req.query.account;
- 
+
   //2:创建sql
   var sql = " SELECT id FROM pu_login WHERE account = ?";
   //3:发送sql并且结果返回脚手架
@@ -115,9 +120,9 @@ server.get("/login", (req, res) => {
   });
 });
 // //用户注销
-server.get("/logout",(req,res)=>{
+server.get("/logout", (req, res) => {
   req.session.destroy();
-  res.send({code:1,msg:"注销成功！"})
+  res.send({ code: 1, msg: "注销成功！" })
 })
 // 好友列表
 server.get("/friend", (req, res) => {
@@ -183,30 +188,30 @@ server.get("/tongyi", (req, res) => {
 })
 
 // 申请好友
-server.get("/sqhy",(req,res)=>{
+server.get("/sqhy", (req, res) => {
   var account = req.query.account;
   var sql = "SELECT id,uname,avatar FROM pu_user WHERE account=?";
-  pool.query(sql,[account],(err,result)=>{
-    if(err) throw err;
-    if(result.length > 0){
-      res.send({code:1,msg:"查找成功",data:result})
-    }else{
-      res.send({code:2,msg:"暂无此人"})
+  pool.query(sql, [account], (err, result) => {
+    if (err) throw err;
+    if (result.length > 0) {
+      res.send({ code: 1, msg: "查找成功", data: result })
+    } else {
+      res.send({ code: 2, msg: "暂无此人" })
     }
-  }) 
+  })
 })
-server.get("/fsqq",(req,res)=>{
+server.get("/fsqq", (req, res) => {
   var uid = req.session.uid;
   console.log(uid)
   var sid = req.query.sid;
   var text = req.query.text;
   var sql = "insert into pu_shenqing values(null,?,?,?)"
-  pool.query(sql,[sid,uid,text],(err,result)=>{
-    if(err) throw err;
-    if(result.affectedRows==1){
-      res.send({code:1,msg:"发送成功"})
-    }else{
-      res.send({code:2,msg:"失败"})
+  pool.query(sql, [sid, uid, text], (err, result) => {
+    if (err) throw err;
+    if (result.affectedRows == 1) {
+      res.send({ code: 1, msg: "发送成功" })
+    } else {
+      res.send({ code: 2, msg: "失败" })
     }
   })
 })
@@ -340,7 +345,7 @@ server.get("/ussr", (req, res) => {
 
 //评论的资讯ID的获取
 server.get("/informationrew", (req, res) => {
-  var id=req.query.id;
+  var id = req.query.id;
   var sql = "SELECT id FROM pu_information WHERE id=?";
   pool.query(sql, [id], (err, result) => {
     if (err) throw err;
@@ -350,7 +355,7 @@ server.get("/informationrew", (req, res) => {
 
 //评论用户的获取
 server.get("/informationrs", (req, res) => {
-  var ifnid=req.query.ifnid;
+  var ifnid = req.query.ifnid;
   var sql = "SELECT * FROM pu_comment LEFT JOIN pu_user ON pu_comment.uid = pu_user.id WHERE ifnid=?";
   pool.query(sql, [ifnid], (err, result) => {
     if (err) throw err;
@@ -358,32 +363,32 @@ server.get("/informationrs", (req, res) => {
   });
 });
 
-server.get("/indexus",(req,res)=>{
+server.get("/indexus", (req, res) => {
   var uid = req.session.uid;
-  if(!uid){
-    res.send({code:-2,msg:"请登录",data:[]});
+  if (!uid) {
+    res.send({ code: -2, msg: "请登录", data: [] });
     return;
   }
-    var sql="SELECT uname,avatar FROM pu_user WHERE id = ? ";
-    pool.query(sql,[uid],(err,result)=>{
-      if(err)throw err;
-      res.send({code:1,msg:"查询成功",data:result});
-    })
+  var sql = "SELECT uname,avatar FROM pu_user WHERE id = ? ";
+  pool.query(sql, [uid], (err, result) => {
+    if (err) throw err;
+    res.send({ code: 1, msg: "查询成功", data: result });
+  })
 });
 //评论用户的当前id的获取
-server.get("/informationus",(req,res)=>{
+server.get("/informationus", (req, res) => {
   var uid = req.session.uid;
-  if(!uid){
-    res.send({code:-2,msg:"请登录",data:[]});
+  if (!uid) {
+    res.send({ code: -2, msg: "请登录", data: [] });
     return;
   }
-  var ifnid=req.query.ifnid;
-  var text=req.query.text;
-  var time=req.query.time;
-  var sql="INSERT INTO pu_comment VALUES(null,?,?,?,?)";
-  pool.query(sql,[uid,ifnid,text,time],(err,result)=>{
-    if(err)throw err;
-    res.send({code:1,msg:"查询成功",data:result});
+  var ifnid = req.query.ifnid;
+  var text = req.query.text;
+  var time = req.query.time;
+  var sql = "INSERT INTO pu_comment VALUES(null,?,?,?,?)";
+  pool.query(sql, [uid, ifnid, text, time], (err, result) => {
+    if (err) throw err;
+    res.send({ code: 1, msg: "查询成功", data: result });
   })
 })
 
@@ -466,7 +471,7 @@ io.on("connection", (socket) => {
   // 接收到客户端的聊天信息
   socket.on("message", (data) => {
     io.emit("list", uname + ":" + data);
-    uname=""
+    uname = ""
   })
   //将客户端聊天内容广播给所有客户
   // 接收客户端退出操作

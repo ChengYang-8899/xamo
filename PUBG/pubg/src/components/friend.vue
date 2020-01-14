@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div></div v-if="isRouterAlive">
+    
     <mt-header fixed class="friend" title="盟友圈"></mt-header>
     <div class="d">
       <form action="/">
@@ -11,7 +11,7 @@
     <div v-show="b==-1">
       <span>{{msg}}</span>
       <div v-for="(p,i) of kong" :key="i" class="a">
-        <img class="avatar" :src="'http://127.0.0.1:5000/'+p.avatar">
+        <img class="avatar" :src="'http://ddchlm.applinzi.com/'+p.avatar">
         <span>{{p.uname}}</span>
       </div>
     </div>
@@ -19,7 +19,7 @@
     <div v-show="c==-1">
       <span>{{smsg}}</span>
       <div v-for="(p,i) of txmc" :key="i" class="a"> 
-         <img class="avatar" :src="'http://127.0.0.1:5000/'+p.avatar">
+         <img class="avatar" :src="'http://ddchlm.applinzi.com/'+p.avatar">
          <span class="yang">{{p.uname}} </span>
          <span class="fan">附言:{{sqr[i].text}}</span>
           <div @click="toyi(sqr[i].sid,sqr[i].id)">同意</div>
@@ -33,7 +33,7 @@
     <div>
       <span>{{bbb}}</span>
         <div class="a" :style="{ 'height':height,'opacity':opacity }">
-          <img class="avatar" :src="'http://127.0.0.1:5000/'+sqhy.avatar">
+          <img class="avatar" :src="'http://ddchlm.applinzi.com/'+sqhy.avatar">
           <span>{{sqhy.uname}}</span>
           <div><span @click="fssq" class="friend-name">申请</span></div>
           <div><span @click="qxsq" class="friend-name">取消</span></div>

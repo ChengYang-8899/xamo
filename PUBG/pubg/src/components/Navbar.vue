@@ -2,7 +2,7 @@
 <div id="fu">
 <mt-navbar class="title" v-model="active" fixed>
   <van-cell is-link @click="showPopup"  style="padding:0;width:45px;height:45px;margin-top:5px;background: linear-gradient(to bottom,rgb(227,232,242),rgb(229,232,234));border:1px solid #ccc;border-radius:50%">
-    <img alt="未登录" v-for="(q,i) of liss" :key="i" :src="'http://127.0.0.1:5000/'+q.avatar" class="imgg">
+    <img alt="未登录" v-for="(q,i) of liss" :key="i" :src="'http://ddchlm.applinzi.com/'+q.avatar" class="imgg">
   </van-cell>
   <mt-tab-item  @click="change('tab1')" id="tab1"><span>资讯</span></mt-tab-item>
   <mt-tab-item @click="change('tab2')" id="tab2"><span>赛事</span></mt-tab-item>
@@ -11,7 +11,7 @@
 </mt-navbar>
 <div v-for="(q,i) of liss" :key="i"  >
  <van-popup v-model="show" closeable position="left" :style="{ width: '80%',height: '100%'}" class="left">
- <img :src="'http://127.0.0.1:5000/'+q.avatar" class="" class="imgg1">
+ <img :src="'http://ddchlm.applinzi.com/'+q.avatar" class="imgg1">
   <span style="position:relative; top:-25px;">{{q.uname}}</span>
   <div class="position">
     <div class="me"><img src="../assets/me.png"/>与我相关</div>
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="div">
-                <img :src="'http://127.0.0.1:5000/'+p.pic" class="img_2" alt="暂时无法显示">
+                <img :src="'http://ddchlm.applinzi.com/'+p.pic" class="img_2" alt="暂时无法显示">
             </div>
             </div>
              <mt-button @click="loadmore" size="large"  class="button">加载更多</mt-button>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="div">
-                <img :src="'http://127.0.0.1:5000/'+e.pic" class="img_2" alt="暂时无法显示">
+                <img :src="'http://ddchlm.applinzi.com/'+e.pic" class="img_2" alt="暂时无法显示">
             </div>
             </div>
              <mt-button @click="tour" size="large" class="button">加载更多</mt-button>
@@ -66,7 +66,7 @@
                 <div class="container_div">{{f.title}}</div>
             </div>
             <div class="div">
-                <img :src="'http://127.0.0.1:5000/'+f.pic" class="img_2" alt="暂时无法显示">
+                <img :src="'http://ddchlm.applinzi.com/'+f.pic" class="img_2" alt="暂时无法显示">
             </div>
         </div>
             <mt-button @click="stra" size="large" class="button">加载更多</mt-button>
@@ -78,7 +78,7 @@
        <div class="video"  v-for="(g,i) of zu" :key="i"> 
                 <div class="video_div">{{g.title}}</div>
             <div class="div_video">
-               <video :src="'http://127.0.0.1:5000/'+g.video" controls="" preload="metadata"  style="object-fit: fill;width:100%;
+               <video :src="'http://ddchlm.applinzi.com/'+g.video" controls="" preload="metadata"  style="object-fit: fill;width:100%;
     height:100%;">你的浏览器版本太低请升级！</video>
             </div>
             <div>{{g.text}}</div>
