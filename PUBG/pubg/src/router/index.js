@@ -1,31 +1,38 @@
-import Vue from "vue";
-// import VueRouter from "vue-router";
-// import Home from "../views/Home.vue";
+import Vue from 'vue'
+import Router from 'vue-router'
+// import Index from "../views/Index.vue"
+import Login from "../components/Login.vue"
+import recomeed from '../components/recomeed.vue'
+import tour from '../components/tour.vue'
+import strate from '../components/strate.vue'
+import haidao from '../components/haidao.vue'
+import reg from '../components/reg.vue'
+import Wqk from '../components/Wqk.vue'
+import Navbar from '../components/Navbar.vue'
+import friend from '../components/friend.vue'
+import zjcx from '../components/Zjcx.vue'
 
-Vue.use(VueRouter);
-
-const routes = [
-  
-  // {
-  //   path: "/home",
-  //   name: "home",
-  //   component: Home
-  // },
-  // {
-  //   path: "/about",
-  //   name: "about",
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue")
-  // }
-];
-
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes
-});
-
-export default router;
+Vue.use(Router)
+export default new Router({
+  routes: [
+    {path:'/zjcx',component:zjcx},
+    {path:'/friend',component:friend},
+   {path:'/Wqk',component:Wqk},
+    {path:'/Reg',component:reg},
+    {path:'/haidao',component:haidao},
+    {path:'/',component:Navbar},
+    {path:'/Login',component:Login},
+    // {path:'/Navbar',name:'Navbar',component:Navbar,},
+    {path:'/recomeed/:id',name:'recomeed',component: () => import(
+      /* webpackChunkName: "recommed" */ 
+      '../components/recomeed.vue'),},
+    {path:'/tour/:id',name:'tour',component: () => import(
+        /* webpackChunkName: "recommed" */ 
+        '../components/tour.vue'),
+      },
+      {path:'/strate/:id',name:'strate',component: () => import(
+        /* webpackChunkName: "recommed" */ 
+        '../components/strate.vue'),
+      },
+  ]
+})

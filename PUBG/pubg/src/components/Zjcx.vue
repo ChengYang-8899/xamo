@@ -18,7 +18,7 @@
     <table  v-for="(item,i) of list" :key="i" @click="xs" class="tt">
     <tr>
       <td>
-      <img style="margin-right:15px;" :src="'http://ddchlm.applinzi.com/record/'+item.pic" />
+      <img style="margin-right:15px;" :src="'http://127.0.0.1:5050/record/'+item.pic" />
       {{item.wname}}
       {{item.atias}}
       </td>

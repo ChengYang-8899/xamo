@@ -36,7 +36,7 @@
   width:100%;
   min-height:620px;
   margin-top:54px;
-  background:url(../assets/壁纸.jpeg) no-repeat fixed;
+  background:url("../assets/bz.jpeg") no-repeat fixed;
   background-size:100%;
 }
 .c{
@@ -54,7 +54,7 @@
     height: 60px;
     width: 100%;
     position: fixed;
-    bottom: 0;
+    bottom: 50px;
   }
   .b{
     border:1px solid rgb(242,245,242);

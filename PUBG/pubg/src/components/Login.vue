@@ -55,7 +55,7 @@
 </script>
 <style scoped>
     .bg{
-        background:url(../assets/login.jpg) center center no-repeat;
+        background:url("../assets/login.jpg") center center no-repeat;
         background-size:cover;
         width:100%;
         height:100%;

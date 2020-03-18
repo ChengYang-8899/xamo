@@ -15,29 +15,37 @@ io.sockets.on('connection', (socket) => {
 
 //2:创建数据库连接池
 var pool = mysql.createPool({
-  // host: "127.0.0.1",
-  // user: "root",
-  // password: "",
-  // port: 3306,
-  // database: "PUBG"
-  host: process.env.MYSQL_HOST,
-  port: process.env.MYSQL_PORT,
-  user: process.env.ACCESSKEY,
-  password: process.env.SECRETKEY,
-  database: 'app_' + process.env.APPNAME,
+  host: "127.0.0.1",
+  user: "root",
+  password: "",
+  port: 3306,
+  database: "PUBG",
+  // host: process.env.MYSQL_HOST,
+  // port: process.env.MYSQL_PORT,
+  // user: process.env.ACCESSKEY,
+  // password: process.env.SECRETKEY,
+  // database: 'app_' + process.env.APPNAME,
   connectionLimit: 15,
 });
 //3:创建web服务器
 
 //4:配置跨域
 //允许跨域程序端口
+// server.use(function(req, res,) {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'DELETE,PUT,POST,GET,OPTIONS');
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+  
+// });
 server.use(
-  cors({
+  cors(
+    {
     //允许哪个程序列表 脚手架
-    origin: ["http://127.0.0.1:8080", "http://localhost:8080"],
+    origin: ["http://127.0.0.1:8080", "http://localhost:8080","http://127.0.0.1:5500"],
     //每次请求验证
     credentials: true
-  })
+  }
+  )
 );
 //5:配置session对象
 server.use(

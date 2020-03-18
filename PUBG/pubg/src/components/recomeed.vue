@@ -14,14 +14,14 @@
             <div class="recomd_title">{{title}}</div>
                 <div class="recomd_ke">
                     <div class="recomd_div2" v-for="(s,i) of list" :key="i">
-                        <img :src="'http://ddchlm.applinzi.com/'+s.avatar" class="img_1">
+                        <img :src="'http://127.0.0.1:5050/'+s.avatar" class="img_1">
                         <span class="possion_span">{{s.uname}}</span></div>
                         <span class="align_time">{{time}}</span>
                     </div>
                     <div class="recomd_text">
                         {{text}} 
                     </div>
-                    <img class="recomd-img_2" :src="'http://ddchlm.applinzi.com/'+pic">
+                    <img class="recomd-img_2" :src="'http://127.0.0.1:5050/'+pic">
                 </div>
              <div @click="zan" class="recomd_button"><img src="../../public/yemian/dzan.png" >{{nblikes}}
              </div>
@@ -34,7 +34,7 @@
                 <div>
                     <div>
                         <div>
-                            <img :src="'http://ddchlm.applinzi.com/'+e.avatar" class="img_1">
+                            <img :src="'http://127.0.0.1:5050/'+e.avatar" class="img_1">
                             <span class="uname">{{e.uname}}</span>
                         </div>
                             <div class="talk">{{e.text}}</div>
@@ -42,6 +42,7 @@
                         <div class="talk1">{{e.time}}</div>
                     </div>
               </div>
+              <div style="width:100%;height:65px;"></div>
         </div>
         </div>
 </template>
